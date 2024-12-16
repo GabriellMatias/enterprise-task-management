@@ -1,11 +1,18 @@
 <app-header />
 <main>
   <ul id="users">
-    <li>
-      <app-user />
-    </li>
+    <!-- @for (user of users; track $index) { -->
+      <li *ngFor="let user of users">
+        <app-user [selected]="user.id ===  selectedUser" (selectedWithOutSignals)="onSelectedUser($event)" (selectedWithSignals)="onSelectedUser($event)" [userWithOutSignals]="user" [userWithSignals]="user" />
+      </li>
+    <!-- } -->
   </ul>
+  <!-- @if (selectedUser) { -->
+    <app-tasks *ngIf="getSelectedUser; else fallback" [name]="getSelectedUser.name"  [userId]="getSelectedUser.id"/>
+  <!-- } @else{ -->
+      <ng-template #fallback>
+        <p>Selecte an user First </p>
+      </ng-template>
+  <!-- } -->
 </main>
-
-
 

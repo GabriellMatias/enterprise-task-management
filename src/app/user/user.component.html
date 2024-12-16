@@ -1,6 +1,6 @@
 <div>
-  <button>
-    <img src="" alt="user IMG">
-    <span>NAME</span>
+  <button [class.active]="selected" (click)="onSelectedUser()">
+    <img [src]="imagePath" [alt]="userWithOutSignals.name">
+    <span>{{userWithSignals().name}}</span>
   </button>
 </div>
