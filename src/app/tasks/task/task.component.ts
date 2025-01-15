@@ -1,25 +1,28 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-
+import { Component, inject, Input } from '@angular/core';
+import { CardComponent } from "../../ui/card/card.component";
+import {DatePipe} from "@angular/common"
+import { TaskService } from '../task.service';
 // put it on .model.ts file - good code pratice
-interface TaskProps{
-  id: String;
-  userId: String;
-  title: String;
-  summary: String;
-  dueDate: String;
+export interface TaskProps{
+  id: string;
+  userId: string;
+  title: string;
+  summary: string;
+  dueDate: string;
 }
 @Component({
   selector: 'app-task',
-  imports: [],
+  imports: [CardComponent, DatePipe],
   templateUrl: './task.component.html',
   styleUrl: './task.component.css'
 })
 export class TaskComponent {
   @Input({required:true}) task!:TaskProps
-  @Output() complete = new EventEmitter()
+  private tasksService = inject(TaskService)
 
   onCompleteTask(){
-    this.complete.emit(this.task.id)
+    this.tasksService.completeTask(this.task.id)
   }
+
 
 }
