@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, input, output, Output } from '@angular/core';
-import { CardComponent } from "../ui/card/card.component";
 
 export interface userProps{
   id:string;
@@ -9,9 +8,9 @@ export interface userProps{
 
 @Component({
   selector: 'app-user',
-  imports: [CardComponent],
   templateUrl: './user.component.html',
-  styleUrl: './user.component.css'
+  styleUrl: './user.component.css',
+  standalone: false
 })
 // Using Signals just to know how it works
 export class UserComponent {

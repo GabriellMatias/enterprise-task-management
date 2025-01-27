@@ -1,6 +1,4 @@
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
-import type { TaskProps } from '../task/task.component';
-import { FormsModule } from '@angular/forms';
 import { TaskService } from '../task.service';
 
 export interface NewTaksType {
@@ -11,7 +9,7 @@ export interface NewTaksType {
 
 @Component({
   selector: 'app-new-task',
-  imports: [FormsModule],
+  standalone: false,
   templateUrl: './new-task.component.html',
   styleUrl: './new-task.component.css'
 })

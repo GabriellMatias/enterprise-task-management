@@ -1,6 +1,4 @@
 import { Component, inject, Input } from '@angular/core';
-import { CardComponent } from "../../ui/card/card.component";
-import {DatePipe} from "@angular/common"
 import { TaskService } from '../task.service';
 // put it on .model.ts file - good code pratice
 export interface TaskProps{
@@ -12,7 +10,7 @@ export interface TaskProps{
 }
 @Component({
   selector: 'app-task',
-  imports: [CardComponent, DatePipe],
+  standalone: false,
   templateUrl: './task.component.html',
   styleUrl: './task.component.css'
 })
